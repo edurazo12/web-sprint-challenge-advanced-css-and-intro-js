@@ -209,16 +209,17 @@ Practice accessing data above by console.log-ing following items:
 
 //(1) Name of the first artist (0th index) in the array
 
+console.log(artists[0].name)
 
 //(2) Bio of the third artist (2nd index) in the array 
 
-
+console.log(artists[2].bio)
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 2: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
 (no function needed) 
 There is a typo in your dataset 😱 The 9th artist, Vincent Van Gogh is currently Vincent Van Dough. Use an array method to fix this issue and console.log() to check your work. */
 
-
+artists[8].name = "Vincent Van Gogh";
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 3: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀  
  Use getArtistByIndex to do the following:
@@ -232,7 +233,10 @@ function getArtistByIndex(/*Your Code Here*/) {
   /*Your Code Here*/
 }  
 
-
+function getArtistByIndex(array, number) {
+  const index = array[number];
+  return `the artist at index ${index.id} is ${index.name}`
+}
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 4: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
 Use get20s to do the following: 
@@ -246,7 +250,17 @@ function get20s(/*Your Code Here*/){
   /*Your Code Here*/
 }
 
-
+function get20s(array, year) {
+  let newArray = []
+  for (let i = 0; i < array.length; i++){
+    let newYears = array[i].years.split("-");
+    if (newYears[0] >= 1900 && newYears[0] < 2000 && newYears[1] <= 2000){
+      newArray.push(array[i].name);
+      
+    }
+  }
+return newArray;
+}
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 5: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
  Use removeArtist to do the following:
@@ -261,6 +275,11 @@ function removeArtist(/*Your Code Here*/){
    /*Your Code Here*/
 }
    
+function removeArtist(array, number){
+  let remove = array.splice(number, 1);
+  return array.length;
+}
+
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 6: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
 Use addArtist to do the following: 
@@ -282,6 +301,20 @@ function addArtist(/*Your Code Here*/){
     /*Your Code Here*/
   }
 
+  function addArtist(array){
+    let add = array.push(
+      {
+        id: 20,
+        name: "Esteban",
+        years: "2000 - 2021",
+        genre: "Web Developer",
+        nationality: "American",
+        bio: "Esteban is increasily excited to create new things in the world."
+      }
+    )
+    return array;
+  }
+
   
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 7: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
@@ -293,6 +326,16 @@ For example lotsOfArt(artists); will return ["Amedeo Modigliani", "Rene Magritte
 
 function lotsOfArt(/*Your Code Here*/){
   /*Your Code Here*/
+}
+
+function lotsOfArt(array){
+  const newArray = []
+  for (let i = 0; i < array.length; i++) {
+    if (array[i].paintings > 100) {
+      newArray.push(array[i].name)
+    }
+  }
+  return newArray;
 }
 
 
